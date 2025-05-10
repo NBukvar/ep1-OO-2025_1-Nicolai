@@ -1,0 +1,76 @@
+package modelo;
+import java.util.ArrayList;
+import java.util.List;
+
+public class aluno {
+    private String nome;
+    private String matricula;
+    private String curso;
+
+    protected List<Turma> turmasMatriculadas;
+    protected List<Avaliacao> avaliacoes;
+
+    private boolean trancado;
+
+    public aluno(String nome, String matricula, String curso) {
+        this.nome = nome;
+        this.matricula = matricula;
+        this.curso = curso;
+        this.turmasMatriculadas = new ArrayList<>();
+        this.trancado = false;
+        this.avaliacoes = new ArrayList<>();
+
+    }
+//getters e setter
+    public String getNome() {
+        return nome;
+    }
+
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public String getCurso() {
+        return curso;
+    }
+
+    public boolean isTrancado() {
+        return trancado;
+    }
+
+    public void setTrancado(boolean trancado) {
+        this.trancado = trancado;
+    }
+
+    public List<Turma> getTurmasMatriculadas() {
+        return turmasMatriculadas;
+    }
+
+    public List<Avaliacao> getAvaliacoes() {
+        return avaliacoes;
+    }
+
+    // metodo controle
+
+    public void matricularEmTurma(Turma turma) {
+        turmasMatriculadas.add(turma);
+    }
+
+    public void trancarTurma(Turma turma) {
+        turmasMatriculadas.remove(turma);
+    }
+
+    public void adicionarAvaliacao(Avaliacao avaliacao) {
+        avaliacoes.add(avaliacao);
+    }
+
+    public boolean podeMatricularEmTurma(Turma turma) {
+        return true;
+    }
+
+    public String toString() {
+        return String.format("%s (%s) - Curso: %s", nome, matricula, curso);
+    }
+}
+
+
