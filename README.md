@@ -9,9 +9,9 @@ O enunciado do trabalho pode ser encontrado aqui:
 
 ## Dados do Aluno
 
-- **Nome completo:** [Preencher aqui]
-- **Matrícula:** [Preencher aqui]
-- **Curso:** [Preencher aqui]
+- **Nome completo:** Nicolai Bukvar Miketen
+- **Matrícula:** 241025345
+- **Curso:** Engenharias (3 Semestre)
 - **Turma:** [Preencher aqui]
 
 ---
