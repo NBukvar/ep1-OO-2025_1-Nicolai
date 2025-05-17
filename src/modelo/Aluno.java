@@ -21,7 +21,7 @@ public class Aluno {
         this.avaliacoes = new ArrayList<>();
 
     }
-//getters e setter
+//getters
     public String getNome() {
         return nome;
     }
@@ -37,7 +37,7 @@ public class Aluno {
     public boolean isTrancado() {
         return trancado;
     }
-
+//setters
     public void setTrancado(boolean trancado) {
         this.trancado = trancado;
     }

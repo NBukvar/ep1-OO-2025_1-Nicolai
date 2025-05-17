@@ -14,11 +14,9 @@ public class Disciplina {
         this.cargaHoraria = cargaHoraria;
         this.preRequisitos = new ArrayList<>();
     }
+   //getters
     public String getNome() {
         return nome;
-    }
-    public void adcionaPreRequisito(String codigo) {
-        preRequisitos.add(codigo);
     }
     public String getCodigo() {
         return codigo;
@@ -28,6 +26,9 @@ public class Disciplina {
     }
     public List<String> getPreRequisitos() {
         return preRequisitos;
+    }
+    public void adcionaPreRequisito(String codigo) {
+        preRequisitos.add(codigo);
     }
     public String toString() {
         return nome + "("+ codigo + ") - " + cargaHoraria + " horas";
