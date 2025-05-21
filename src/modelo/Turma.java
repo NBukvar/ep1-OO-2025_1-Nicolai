@@ -34,6 +34,17 @@ public class Turma {
         return false;
     }
 
+    public String getSemestre() {
+        return semestre;
+    }
+
+    public Disciplina getDisciplina() {
+        return disciplina;
+    }
+
+    public Professor getProfessor() {
+        return professor;
+    }
     public String getFormaAvaliacao() {
         return formaAvaliacao;
     }
@@ -54,5 +65,7 @@ public class Turma {
                 "\n - Capacidade: " + capacidadeMaxima + " alunos";
     }
 
-
+    public boolean isPresencial() {
+        return presencial;
+    }
 }
