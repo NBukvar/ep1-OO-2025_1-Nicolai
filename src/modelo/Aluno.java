@@ -79,10 +79,15 @@ public class Aluno {
     }
 
     public String toString() {
-        return "Nome: " + nome +
+        String turmasString = "";
+        for (Turma turma : turmasMatriculadas) {
+            turmasString += turma.getCodigoTurma() + " ";
+        }
+
+        return "\n Nome: " + nome +
                 "\n Matricula: " + matricula +
                 "\n Curso: " + curso +
-                "\n Turmas: " + turmasMatriculadas ;
+                "\n Turmas: " + (turmasString.isEmpty() ? "Nenhuma turma" : turmasString.trim()) ;
     }
 
 

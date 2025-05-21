@@ -44,7 +44,7 @@ public class Turma {
         return alunosMatriculados;
     }
     public String toString() {
-        return "Turma" +codigoTurma +
+        return "Turma: " +codigoTurma +
                 "\n - Disciplina: " + disciplina.getCodigo() +
                 "\n - Professor: " + professor.getNome() +
                 "\n - Semestre: " + semestre +

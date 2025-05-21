@@ -7,7 +7,7 @@ public class SistemaAcademico {
     private static AcaoAluno AcaoAluno = new AcaoAluno();
     private static AcaoDisciplinaTurma AcaoTurma = new AcaoDisciplinaTurma();
     private static AcaoAvaliacaoFrequencia AcaoAvaliacao = new AcaoAvaliacaoFrequencia();
-
+    public static AcaoDisciplinaTurma acaoDisciplinaTurma = new AcaoDisciplinaTurma();
     public static void main(String[] args) {
         boolean executando = true;
 
@@ -68,7 +68,7 @@ private static void menuAluno() {
 
 
                 Aluno aluno = AcaoAluno.cadastrarAluno(nome, matricula, curso, especial);
-                AcaoDisciplinaTurma acaoDisciplinaTurma = new AcaoDisciplinaTurma();
+
                 boolean continuarMatriculas = true;
                 while (true) {
 

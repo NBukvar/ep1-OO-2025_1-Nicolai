@@ -3,8 +3,8 @@ import modelo.*;
 import java.util.*;
 
 public class AcaoDisciplinaTurma {
-    private List<Disciplina> disciplinas = new ArrayList<>();
-    private List<Turma> turmas = new ArrayList<>();
+    private  static List<Disciplina> disciplinas = new ArrayList<>();
+    private static List<Turma> turmas = new ArrayList<>();
 
     public void cadastrarDisciplina(String nome, String codigo, int cargaHoraria,List<String> preRequisitos) {
         disciplinas.add(new Disciplina(nome, codigo, cargaHoraria, preRequisitos));
