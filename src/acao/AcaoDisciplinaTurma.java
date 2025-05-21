@@ -42,4 +42,11 @@ public class AcaoDisciplinaTurma {
     public List<Turma> listarTurmasDisponiveis() {
         return new ArrayList<>(turmas);
     }
+
+    public Turma buscarTurmaPorCodigo(String codigoTurma) {
+        for (Turma t : turmas) {
+            if (t.getCodigoTurma().equals(codigoTurma)) return t;
+        }
+        return null;
+    }
 }
