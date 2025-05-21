@@ -25,6 +25,19 @@ public class AcaoAluno {
             System.out.println(aluno);
         }
     }
+    public boolean trancarAluno(String matricula) {
+        Aluno aluno = buscarAlunoporMatricula(matricula);
+        if (aluno != null) {
+            aluno.trancarMatricula();
+            System.out.println("Aluno trancado com sucesso.");
+            return true;
+        } else {
+            System.out.println("Aluno não encontrado.");
+            return false;
+        }
+    }
+
+
 
     public Aluno buscarAlunoporMatricula(String matricula){
         for (Aluno aluno : alunos) {

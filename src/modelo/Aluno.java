@@ -11,6 +11,7 @@ public class Aluno {
     protected List<Avaliacao> avaliacoes;
 
     private boolean trancado;
+    private boolean matriculaTrancada = false;
 
     public Aluno(String nome, String matricula, String curso) {
         this.nome = nome;
@@ -56,15 +57,22 @@ public class Aluno {
 
 
     public boolean matricularEmTurma(Turma turma) {
-        if (turma.matricularAluno(this)) {
-            turmasMatriculadas.add(turma);
-            return true;
+        if (matriculaTrancada) {
+            System.out.println("O Aluno tem matricula trancada, logo, não pode se matricular em turmas.");
+            return false;
         }
-        return false;
+        turmasMatriculadas.add(turma);
+        return true;
     }
     public void trancarMatricula() {
-        trancado = true;
+        this.matriculaTrancada = true;
+        turmasMatriculadas.clear();
     }
+
+    public boolean isMatriculaTrancada() {
+        return matriculaTrancada;
+    }
+
     public void trancarTurma(Turma turma) {
         turmasMatriculadas.remove(turma);
     }
@@ -84,10 +92,13 @@ public class Aluno {
             turmasString += turma.getCodigoTurma() + " ";
         }
 
-        return "\n Nome: " + nome +
+        return  "\n------------------------" +
+                "\n Nome: " + nome +
                 "\n Matricula: " + matricula +
                 "\n Curso: " + curso +
-                "\n Turmas: " + (turmasString.isEmpty() ? "Nenhuma turma" : turmasString.trim()) ;
+                "\n Turmas: " + (turmasString.isEmpty() ? "Nenhuma turma" : turmasString.trim()) +
+                "\n Matrícula trancada: " +(matriculaTrancada ? "Sim" : "Não") +
+                "\n------------------------";
     }
 
 

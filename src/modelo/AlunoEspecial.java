@@ -20,7 +20,9 @@ public class AlunoEspecial extends Aluno{
 
     @Override
     public String toString() {
-        return super.toString() + "\nEspecial: Sim";
+        return super.toString() +
+                "\n Especial: Sim" +
+                "\n------------------------";
     }
 
 }
