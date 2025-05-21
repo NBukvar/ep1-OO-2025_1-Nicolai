@@ -41,7 +41,9 @@ public class Aluno {
     public void setTrancado(boolean trancado) {
         this.trancado = trancado;
     }
-
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
     public List<Turma> getTurmasMatriculadas() {
         return turmasMatriculadas;
     }
@@ -52,10 +54,17 @@ public class Aluno {
 
     // metodo controle
 
-    public void matricularEmTurma(Turma turma) {
-        turmasMatriculadas.add(turma);
-    }
 
+    public boolean matricularEmTurma(Turma turma) {
+        if (turma.matricularAluno(this)) {
+            turmasMatriculadas.add(turma);
+            return true;
+        }
+        return false;
+    }
+    public void trancarMatricula() {
+        trancado = true;
+    }
     public void trancarTurma(Turma turma) {
         turmasMatriculadas.remove(turma);
     }
@@ -75,6 +84,11 @@ public class Aluno {
                 "\n Curso: " + curso +
                 "\n Turmas: " + turmasMatriculadas ;
     }
+
+
+
+
+
 }
 
 

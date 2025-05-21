@@ -56,59 +56,70 @@ private static void menuAluno() {
 
         switch (opcao) {
             case 1:
+
                 System.out.print("Nome: ");
                 String nome = scanner.nextLine();
                 System.out.print("Matrícula: ");
                 String matricula = scanner.nextLine();
                 System.out.print("É especial (s/n)? ");
                 boolean especial = scanner.nextLine().equalsIgnoreCase("s");
-
                 System.out.print("Curso: ");
                 String curso = scanner.nextLine();
 
+
                 Aluno aluno = AcaoAluno.cadastrarAluno(nome, matricula, curso, especial);
+                AcaoDisciplinaTurma acaoDisciplinaTurma = new AcaoDisciplinaTurma();
+                boolean continuarMatriculas = true;
+                while (true) {
 
-                boolean continuarMatricula = true;
-                while (continuarMatricula) {
-                    System.out.println("\n--- Turmas disponíveis ---");
-                    AcaoDisciplinaTurma acaoDisciplinaTurma = new AcaoDisciplinaTurma();
-                    List<Turma> turmasDisponiveis = acaoDisciplinaTurma.listarTurmasDisponiveis();
+                    List<Turma> turmasDisponiveis = acaoDisciplinaTurma.getTurmas();
 
+                    if (turmasDisponiveis.isEmpty()) {
+                        System.out.println("Nenhuma turma disponível para matrícula.");
+                        break;
+                    }
+
+                    // Mostra turmas disponíveis
+                    System.out.println("\n--- TURMAS DISPONÍVEIS ---");
                     for (int i = 0; i < turmasDisponiveis.size(); i++) {
                         System.out.println((i + 1) + " - " + turmasDisponiveis.get(i));
                     }
 
+                    // Pede escolha do aluno
+                    System.out.println("Digite o código da turma que deseja se matricular:");
+                    String escolha = scanner.nextLine();
 
-                    boolean turmaSelecionada = false;
+                    try {
+                        int indiceEscolhido = Integer.parseInt(escolha);
+                        if (indiceEscolhido >= 1 && indiceEscolhido <= turmasDisponiveis.size()) {
+                            Turma turmaEscolhida = turmasDisponiveis.get(indiceEscolhido - 1);
 
-                    while (!turmaSelecionada) {
-                        System.out.println("Digite o número da turma para matrícula ou 0 para sair:");
-                        String escolha = scanner.nextLine();
-
-                        if (escolha.equals("0")) {
-                            continuarMatricula = false;
-                            break;
-                        }
-
-                        boolean encontrada = false;
-                        for (int i = 0; i < turmasDisponiveis.size(); i++) {
-                            String indiceEsperado = String.valueOf(i + 1);
-                            if (escolha.equals(indiceEsperado)) {
-                                Turma turmaEscolhida = turmasDisponiveis.get(i);
-                                aluno.matricularEmTurma(turmaEscolhida);
-                                System.out.println("Aluno matriculado com sucesso na turma: " + turmaEscolhida.getCodigoTurma());
-                                turmaSelecionada = true;
-                                encontrada = true;
-                                break;
+                            if (aluno.matricularEmTurma(turmaEscolhida)) {
+                                System.out.println("Matrícula realizada com sucesso na turma: " + turmaEscolhida.getCodigoTurma());
+                            } else {
+                                System.out.println("Não foi possível realizar a matrícula. Turma cheia?");
                             }
-                        }
 
-                        if (!encontrada) {
-                            System.out.println("Opção inválida. Por favor, escolha um número válido de turma.");
+                        } else {
+                            System.out.println("Código inválido. Tente novamente.");
+                            continue;
                         }
+                    } catch (NumberFormatException e) {
+                        System.out.println("Entrada inválida. Digite apenas números.");
+                        continue;
+                    }
+
+                    // Pergunta se o aluno quer continuar se matriculando
+                    System.out.print("Deseja se matricular em outra turma? (s/n): ");
+                    String resposta = scanner.nextLine();
+                    if (!resposta.equalsIgnoreCase("s")) {
+                        continuarMatriculas = false;
+                        System.out.println("Voltando ao menu principal...");
                     }
                     break;
                 }
+
+
             case 2:
                 AcaoAluno.listarAlunos();
                 break;
@@ -117,7 +128,7 @@ private static void menuAluno() {
                 String mat = scanner.nextLine();
                 Aluno a = AcaoAluno.buscarAlunoporMatricula(mat);
                 if (a != null) {
-                    //a.trancarMatricula();
+                    a.trancarMatricula();
                     System.out.println("Aluno trancado com sucesso.");
                 } else {
                     System.out.println("Aluno não encontrado.");

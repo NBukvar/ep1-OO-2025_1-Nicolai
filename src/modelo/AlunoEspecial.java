@@ -7,12 +7,14 @@ public class AlunoEspecial extends Aluno{
     }
     //checando se aluno pode ser especial ou não
     @Override
-    public void matricularEmTurma(Turma turma) {
+    public boolean matricularEmTurma(Turma turma) {
         if (turmasMatriculadas.size() < 2){
             turmasMatriculadas.add(turma);
+            return true;
         }
         else {
             System.out.println("Aluno Especial só pode cursar 2 disciplinas.");
+            return false;
         }
     }
 
