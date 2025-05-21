@@ -60,6 +60,7 @@ public class Aluno {
         turmasMatriculadas.remove(turma);
     }
 
+
     public void adicionarAvaliacao(Avaliacao avaliacao) {
         avaliacoes.add(avaliacao);
     }
@@ -69,7 +70,10 @@ public class Aluno {
     }
 
     public String toString() {
-        return String.format("%s (%s) - Curso: %s", nome, matricula, curso);
+        return "Nome: " + nome +
+                "\n Matricula: " + matricula +
+                "\n Curso: " + curso +
+                "\n Turmas: " + turmasMatriculadas ;
     }
 }
 

@@ -34,17 +34,25 @@ public class Turma {
         return false;
     }
 
+    public String getFormaAvaliacao() {
+        return formaAvaliacao;
+    }
+    public String getCodigoTurma() {
+        return codigoTurma;
+    }
     public List<Aluno> getAlunosMatriculados() {
         return alunosMatriculados;
     }
     public String toString() {
         return "Turma" +codigoTurma +
-                " - Disciplina: " + disciplina.getCodigo() +
-                " - Professor: " + professor.getNome() +
-                " - Semestre: " + semestre +
-                " - Avaliação: " + formaAvaliacao +
-                " - Tipo: " + (presencial ? "Presencial" : "Remota") +
-                " - Horário: " + horario +
-                " - Capacidade: " + capacidadeMaxima + " alunos";
+                "\n - Disciplina: " + disciplina.getCodigo() +
+                "\n - Professor: " + professor.getNome() +
+                "\n - Semestre: " + semestre +
+                "\n - Avaliação: " + formaAvaliacao +
+                "\n - Tipo: " + (presencial ? "Presencial" : "Remota") +
+                "\n - Horário: " + horario +
+                "\n - Capacidade: " + capacidadeMaxima + " alunos";
     }
+
+
 }

@@ -8,11 +8,11 @@ public class Disciplina {
     private int cargaHoraria;
     private List<String> preRequisitos;
 
-    public Disciplina(String nome, String codigo, int cargaHoraria) {
+    public Disciplina(String nome, String codigo, int cargaHoraria,List<String> preRequisitos) {
         this.nome = nome;
         this.codigo = codigo;
         this.cargaHoraria = cargaHoraria;
-        this.preRequisitos = new ArrayList<>();
+        this.preRequisitos = preRequisitos;
     }
    //getters
     public String getNome() {

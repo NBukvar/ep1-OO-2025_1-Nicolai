@@ -2,8 +2,8 @@ package modelo;
 
 public class AlunoEspecial extends Aluno{
 
-    public AlunoEspecial( String nome, String matricula ) {
-        super(nome, matricula, "Aluno Especial");
+    public AlunoEspecial( String nome, String matricula,String curso ) {
+        super(nome, matricula,curso);
     }
     //checando se aluno pode ser especial ou não
     @Override
@@ -18,7 +18,7 @@ public class AlunoEspecial extends Aluno{
 
     @Override
     public String toString() {
-        return super.toString() + "-Especial-";
+        return super.toString() + "\nEspecial: Sim";
     }
 
 }

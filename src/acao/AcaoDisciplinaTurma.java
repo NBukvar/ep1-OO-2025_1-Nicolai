@@ -6,8 +6,8 @@ public class AcaoDisciplinaTurma {
     private List<Disciplina> disciplinas = new ArrayList<>();
     private List<Turma> turmas = new ArrayList<>();
 
-    public void cadastrarDisciplina(String nome, String codigo, int cargaHoraria) {
-        disciplinas.add(new Disciplina(nome, codigo, cargaHoraria));
+    public void cadastrarDisciplina(String nome, String codigo, int cargaHoraria,List<String> preRequisitos) {
+        disciplinas.add(new Disciplina(nome, codigo, cargaHoraria, preRequisitos));
         System.out.println("Disciplina cadastrada com sucesso!");
     }
 
@@ -37,5 +37,9 @@ public class AcaoDisciplinaTurma {
         for (Turma t : turmas) {
             System.out.println(t);
         }
+    }
+
+    public List<Turma> listarTurmasDisponiveis() {
+        return new ArrayList<>(turmas);
     }
 }
