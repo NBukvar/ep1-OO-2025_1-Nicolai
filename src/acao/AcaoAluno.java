@@ -53,12 +53,12 @@ public class AcaoAluno {
             System.out.println("1. Adicionar turma");
             System.out.println("2. Remover turma");
             System.out.println("3. Voltar");
-            System.out.print("Escolha: ");
+            System.out.print(" : ");
             int opcao = Integer.parseInt(scanner.nextLine());
 
             switch (opcao) {
                 case 1:
-                    System.out.print("Digite o código da turma a adicionar: ");
+                    System.out.print(" Digite o código da turma a adicionar: ");
                     String codAdicionar = scanner.nextLine();
                     Turma turmaAdicionar = SistemaAcademico.acaoDisciplinaTurma.buscarTurmaPorCodigo(codAdicionar);
 
@@ -66,26 +66,26 @@ public class AcaoAluno {
                         if (!aluno.getTurmasMatriculadas().contains(turmaAdicionar)) {
                             aluno.getTurmasMatriculadas().add(turmaAdicionar);
                             turmaAdicionar.getAlunosMatriculados().add(aluno); // sincronização
-                            System.out.println("Turma adicionada com sucesso.");
+                            System.out.println(" Turma adicionada com sucesso.");
                         } else {
-                            System.out.println("O aluno já está matriculado nessa turma.");
+                            System.out.println(" O aluno já está matriculado nessa turma.");
                         }
                     } else {
-                        System.out.println("Turma não encontrada.");
+                        System.out.println(" Turma não encontrada.");
                     }
                     break;
 
                 case 2:
-                    System.out.print("Digite o código da turma a remover: ");
+                    System.out.print(" Digite o código da turma a remover: ");
                     String codRemover = scanner.nextLine();
                     Turma turmaRemover = SistemaAcademico.acaoDisciplinaTurma.buscarTurmaPorCodigo(codRemover);
 
                     if (turmaRemover != null && aluno.getTurmasMatriculadas().contains(turmaRemover)) {
                         aluno.getTurmasMatriculadas().remove(turmaRemover);
                         turmaRemover.getAlunosMatriculados().remove(aluno); // sincronização
-                        System.out.println("Turma removida com sucesso.");
+                        System.out.println(" Turma removida com sucesso.");
                     } else {
-                        System.out.println("Turma não encontrada ou o aluno não está nela.");
+                        System.out.println(" Turma não encontrada ou o aluno não está nela.");
                     }
                     break;
 
@@ -94,7 +94,7 @@ public class AcaoAluno {
                     break;
 
                 default:
-                    System.out.println("Opção inválida.");
+                    System.out.println(" Opção inválida.");
             }
         }
     }

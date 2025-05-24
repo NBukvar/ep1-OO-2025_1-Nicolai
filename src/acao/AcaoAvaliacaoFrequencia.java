@@ -159,9 +159,22 @@ public class AcaoAvaliacaoFrequencia {
         for (Turma turma : turmas) {
             if (turma.getCodigoTurma().equalsIgnoreCase(codTurma)) {
                 System.out.println("\nRelatório da Turma " + codTurma);
-                for (Aluno aluno : turma.getAlunosMatriculados()) {
-                    System.out.println("- " + aluno.getNome() + " (" + aluno.getMatricula() + ")");
+                Map<String, ResultadoFinal> resultados = turma.getResultadosFinais();
 
+                for (Aluno aluno : turma.getAlunosMatriculados()) {
+                    ResultadoFinal resultado = resultados.get(aluno.getMatricula());
+
+                    if (resultado != null) {
+                        System.out.printf("- %s (%s) | Média: %.2f | Situação: %s\n",
+                                aluno.getNome(),
+                                aluno.getMatricula(),
+                                resultado.getMedia(),
+                                resultado.getSituacao());
+                    } else {
+                        System.out.printf("- %s (%s) | Resultados não disponíveis.\n",
+                                aluno.getNome(),
+                                aluno.getMatricula());
+                    }
                 }
                 return;
             }

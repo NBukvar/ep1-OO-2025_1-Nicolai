@@ -58,12 +58,21 @@ public class Aluno {
 
     public boolean matricularEmTurma(Turma turma) {
         if (matriculaTrancada) {
-            System.out.println("O Aluno tem matricula trancada, logo, não pode se matricular em turmas.");
+            System.out.println("O Aluno tem matrícula trancada, logo, não pode se matricular em turmas.");
             return false;
         }
-        turmasMatriculadas.add(turma);
-        return true;
+        if (turmasMatriculadas.contains(turma)) {
+            System.out.println("Aluno já está matriculado nesta turma.");
+            return false;
+        }
+        if (turma.matricularAluno(this)) {
+            turmasMatriculadas.add(turma);
+            return true;
+        }
+        System.out.println("Turma está cheia ou não foi possível matricular.");
+        return false;
     }
+
     public void trancarMatricula() {
         this.matriculaTrancada = true;
         turmasMatriculadas.clear();
