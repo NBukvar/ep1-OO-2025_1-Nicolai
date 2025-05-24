@@ -6,7 +6,7 @@ import java.util.*;
 public class AcaoAvaliacaoFrequencia {
 
     // Lançamento de notas e frequência
-    public void lancarNotasFrequencia(Turma turma, Map<String, double[]> notas, Map<String, Integer> presencas, int totalAulas) {
+    public void calcularMediasEFrequencias(Turma turma, Map<String, double[]> notas, Map<String, Integer> presencas, int totalAulas) {
         turma.setNotas(notas);
         turma.setPresencas(presencas);
         turma.setTotalAulas(totalAulas);
@@ -45,36 +45,71 @@ public class AcaoAvaliacaoFrequencia {
     }
 
 
-    // Cálculo de médias e frequências
-    public void calcularMediasEFrequencias() {
-        List<Turma> turmas = SistemaAcademico.acaoDisciplinaTurma.getTurmas();
+
+    public void lancarNotasFrequencia(Turma turma) {
         Scanner scanner = new Scanner(System.in);
+        Map<String, double[]> notas = new HashMap<>();
+        Map<String, Integer> presencas = new HashMap<>();
+
+        System.out.println("\nTurma: " + turma.getCodigoTurma());
+        System.out.print(" Total de aulas dadas: ");
+        int totalAulas = Integer.parseInt(scanner.nextLine());
+
+        for (Aluno aluno : turma.getAlunosMatriculados()) {
+            System.out.println(" Notas do aluno " + aluno.getNome() + ": ");
+            double[] n = new double[5];
+            System.out.print(" P1: "); n[0] = Double.parseDouble(scanner.nextLine());
+            System.out.print(" P2: "); n[1] = Double.parseDouble(scanner.nextLine());
+            System.out.print(" P3: "); n[2] = Double.parseDouble(scanner.nextLine());
+            System.out.print(" Listas: "); n[3] = Double.parseDouble(scanner.nextLine());
+            System.out.print(" Seminário: "); n[4] = Double.parseDouble(scanner.nextLine());
+            notas.put(aluno.getMatricula(), n);
+
+            System.out.print(" Número de presenças: ");
+            presencas.put(aluno.getMatricula(), Integer.parseInt(scanner.nextLine()));
+        }
+
+        calcularMediasEFrequencias(turma, notas, presencas, totalAulas);
+    }
+
+    public void calcularMediasEFrequenciasExistentes(Scanner scanner) {
+        System.out.print("Código da turma: ");
+        String codTurma = scanner.nextLine();
+
+        List<Turma> turmas = SistemaAcademico.acaoDisciplinaTurma.getTurmas();
 
         for (Turma turma : turmas) {
-            Map<String, double[]> notas = new HashMap<>();
-            Map<String, Integer> presencas = new HashMap<>();
+            if (turma.getCodigoTurma().equalsIgnoreCase(codTurma)) {
+                System.out.println("\nTurma: " + turma.getCodigoTurma());
 
-            System.out.println("\nTurma: " + turma.getCodigoTurma());
-            System.out.print(" Total de aulas dadas: ");
-            int totalAulas = Integer.parseInt(scanner.nextLine());
 
-            for (Aluno aluno : turma.getAlunosMatriculados()) {
-                System.out.println(" Notas do aluno " + aluno.getNome() + ": ");
-                double[] n = new double[5];
-                System.out.print(" P1: "); n[0] = Double.parseDouble(scanner.nextLine());
-                System.out.print(" P2: "); n[1] = Double.parseDouble(scanner.nextLine());
-                System.out.print(" P3: "); n[2] = Double.parseDouble(scanner.nextLine());
-                System.out.print(" Listas: "); n[3] = Double.parseDouble(scanner.nextLine());
-                System.out.print(" Seminário: "); n[4] = Double.parseDouble(scanner.nextLine());
-                notas.put(aluno.getMatricula(), n);
+                if (turma.getNotas() == null || turma.getPresencas() == null || turma.getTotalAulas() == 0) {
+                    System.out.println("Notas, presenças ou total de aulas não lançados ainda para essa turma.");
+                    return;
+                }
 
-                System.out.print(" Número de presenças: ");
-                presencas.put(aluno.getMatricula(), Integer.parseInt(scanner.nextLine()));
+
+                Map<String, ResultadoFinal> resultados = turma.getResultadosFinais();
+
+                for (Aluno aluno : turma.getAlunosMatriculados()) {
+                    ResultadoFinal resultado = resultados.get(aluno.getMatricula());
+                    if (resultado != null) {
+                        System.out.printf("\nAluno: %s (%s)\n", aluno.getNome(), aluno.getMatricula());
+                        System.out.printf("Média: %.2f, Frequência: %.2f%%, Situação: %s\n",
+                                resultado.getMedia(),
+                                resultado.getFrequencia() * 100,
+                                resultado.getSituacao());
+                    } else {
+                        System.out.printf("\nAluno: %s (%s) - Resultado não encontrado.\n",
+                                aluno.getNome(), aluno.getMatricula());
+                    }
+                }
+                return;
             }
-
-            lancarNotasFrequencia(turma, notas, presencas, totalAulas);
         }
+        System.out.println("Turma não encontrada.");
     }
+
 
     public void exibirBoletimPorAluno(Scanner scanner) {
         System.out.print(" Digite a matrícula do aluno: ");
@@ -126,7 +161,7 @@ public class AcaoAvaliacaoFrequencia {
                 System.out.println("\nRelatório da Turma " + codTurma);
                 for (Aluno aluno : turma.getAlunosMatriculados()) {
                     System.out.println("- " + aluno.getNome() + " (" + aluno.getMatricula() + ")");
-                    // Aqui você pode adicionar mais dados como média e frequência
+
                 }
                 return;
             }
