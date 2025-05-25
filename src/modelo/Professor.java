@@ -1,8 +1,8 @@
 package modelo;
 
 public class Professor {
-    private String nome;
-    private String matricula;
+    private final String nome;
+    private final String matricula;
 
     public Professor(String nome, String matricula) {
         this.nome = nome;
@@ -14,13 +14,6 @@ public class Professor {
     }
     public String getMatricula() {
         return matricula;
-    }
-    //setters
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
     }
 
     public String toString() {

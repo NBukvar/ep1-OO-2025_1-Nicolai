@@ -2,16 +2,16 @@ package modelo;
 import java.util.*;
 
 public class Turma {
-    private String codigoTurma;
-    private Disciplina disciplina;
-    private Professor professor;
-    private String semestre;
-    private String formaAvaliacao;
-    private boolean presencial;
+    private final String codigoTurma;
+    private final Disciplina disciplina;
+    private final Professor professor;
+    private final String semestre;
+    private final String formaAvaliacao;
+    private final boolean presencial;
     private String sala;
-    private String horario;
-    private int capacidadeMaxima;
-    private List<Aluno> alunosMatriculados;
+    private final String horario;
+    private final int capacidadeMaxima;
+    private final List<Aluno> alunosMatriculados;
     private Map<String, double[]> notas;
     private Map<String, Integer> presencas;
     private int totalAulas;
@@ -25,7 +25,7 @@ public class Turma {
         this.semestre = semestre;
         this.formaAvaliacao = formaAvaliacao;
         this.presencial = presencial;
-        this.sala = presencial ? sala : "Remota";
+        this.sala = sala; String sala1 = presencial ? sala : "Remota";
         this.horario = horario;
         this.capacidadeMaxima = capacidadeMaxima;
         this.alunosMatriculados = new ArrayList<>();
@@ -102,6 +102,7 @@ public class Turma {
                 "\n - Semestre: " + semestre +
                 "\n - Avaliação: " + formaAvaliacao +
                 "\n - Tipo: " + (presencial ? "Presencial" : "Remota") +
+                "\n - Sala:" + sala +
                 "\n - Horário: " + horario +
                 "\n - Capacidade: " + capacidadeMaxima + " alunos";
     }

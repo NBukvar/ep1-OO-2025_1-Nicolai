@@ -3,14 +3,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Aluno {
-    private String nome;
-    private String matricula;
-    private String curso;
+    private final String nome;
+    private final String matricula;
+    private final String curso;
 
     protected List<Turma> turmasMatriculadas;
     protected List<Avaliacao> avaliacoes;
 
-    private boolean trancado;
     private boolean matriculaTrancada = false;
 
     public Aluno(String nome, String matricula, String curso) {
@@ -18,7 +17,6 @@ public class Aluno {
         this.matricula = matricula;
         this.curso = curso;
         this.turmasMatriculadas = new ArrayList<>();
-        this.trancado = false;
         this.avaliacoes = new ArrayList<>();
 
     }
@@ -35,22 +33,8 @@ public class Aluno {
         return curso;
     }
 
-    public boolean isTrancado() {
-        return trancado;
-    }
-//setters
-    public void setTrancado(boolean trancado) {
-        this.trancado = trancado;
-    }
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
-    }
     public List<Turma> getTurmasMatriculadas() {
         return turmasMatriculadas;
-    }
-
-    public List<Avaliacao> getAvaliacoes() {
-        return avaliacoes;
     }
 
     // metodo controle
@@ -78,22 +62,6 @@ public class Aluno {
         turmasMatriculadas.clear();
     }
 
-    public boolean isMatriculaTrancada() {
-        return matriculaTrancada;
-    }
-
-    public void trancarTurma(Turma turma) {
-        turmasMatriculadas.remove(turma);
-    }
-
-
-    public void adicionarAvaliacao(Avaliacao avaliacao) {
-        avaliacoes.add(avaliacao);
-    }
-
-    public boolean podeMatricularEmTurma(Turma turma) {
-        return true;
-    }
 
     public String toString() {
         String turmasString = "";

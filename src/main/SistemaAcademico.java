@@ -1,22 +1,40 @@
 package main;
 import acao.*;
 import modelo.*;
-
-import java.sql.SQLOutput;
+import persistencia.*;
 import java.util.*;
 
+    //Definindo os Metodos/Classes que serao utilizados
 public class SistemaAcademico {
-    private static Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
     public static AcaoAluno AcaoAluno = new AcaoAluno();
-    private static AcaoDisciplinaTurma AcaoTurma = new AcaoDisciplinaTurma();
-    private static AcaoAvaliacaoFrequencia AcaoAvaliacao = new AcaoAvaliacaoFrequencia();
+    private static final AcaoDisciplinaTurma AcaoTurma = new AcaoDisciplinaTurma();
+    private static final AcaoAvaliacaoFrequencia AcaoAvaliacao = new AcaoAvaliacaoFrequencia();
     public static AcaoDisciplinaTurma acaoDisciplinaTurma = new AcaoDisciplinaTurma();
 
 
 
 
-
+    //Main para o Sistema Operacional Geral
     public static void main(String[] args) {
+        // Carregar dados dos arquivos
+                // 1. Carrega alunos do CSV e envia para a ação
+        List<Aluno> alunos = PersistenciaAluno.carregarAlunos();
+        AcaoAluno.setAlunos(alunos);
+
+                // 2. Carrega disciplinas
+        List<Disciplina> disciplinas = AcaoDisciplinaTurma.getDisciplinas();
+        AcaoTurma.setDisciplinas(disciplinas);
+
+                 // 3. Carrega professores
+        List<Professor> professores = PersistenciaProfessor.carregarProfessores();
+        AcaoTurma.setProfessores(professores);
+
+                // 4. Carrega turmas com base nas disciplinas e professores
+        List<Turma> turmas = PersistenciaTurma.carregarTurmas(disciplinas, professores);
+        AcaoTurma.setTurmas(turmas);
+
+
         boolean executando = true;
 
         while (executando) {
@@ -28,7 +46,7 @@ public class SistemaAcademico {
             System.out.print(" Escolha uma opção: ");
 
             int opcao = scanner.nextInt();
-            scanner.nextLine(); // limpa buffer
+            scanner.nextLine();
 
             switch (opcao) {
                 case 1:
@@ -42,6 +60,12 @@ public class SistemaAcademico {
                     break;
                 case 4:
                     System.out.println(" Encerrando o sistema com segurança...");
+                    //salvar os dados
+                    PersistenciaAluno.salvarAlunos(AcaoAluno.getAlunos());
+                    PersistenciaDisciplina.salvarDisciplinas(AcaoDisciplinaTurma.getDisciplinas());
+                    PersistenciaTurma.salvarTurmas(AcaoTurma.getTurmas());
+                    PersistenciaProfessor.salvarProfessores(AcaoDisciplinaTurma.getProfessores());
+
                     executando = false;
                     break;
                 default:
@@ -49,7 +73,7 @@ public class SistemaAcademico {
             }
         }
     }
-
+    //No Menu Aluno
 private static void menuAluno() {
     boolean voltar = false;
 
@@ -64,7 +88,7 @@ private static void menuAluno() {
 
         int opcao = scanner.nextInt();
         scanner.nextLine();
-
+    //Caso 1 - Cadastro do Aluno
         switch (opcao) {
             case 1:
 
@@ -131,10 +155,11 @@ private static void menuAluno() {
 
                 }
                 break;
-
+            //Caso 2 - Listar todos os alunos
             case 2:
                 AcaoAluno.listarAlunos();
                 break;
+            //Trancar a Matricula do Aluno ( Trancamento Geral)
             case 3:
                 System.out.print(" Matrícula do aluno: ");
                 String mat = scanner.nextLine();
@@ -146,11 +171,11 @@ private static void menuAluno() {
                     System.out.println(" Aluno não encontrado.");
                 }
                 break;
-
+            //Editar as Turmas na qual o aluno está Matriculado
             case 4:
-                AcaoAluno.editarTurmasAluno(scanner);
+                acao.AcaoAluno.editarTurmasAluno(scanner);
                 break;
-
+            //Voltar ao menu principal
             case 5:
                 voltar = true;
                 break;
@@ -159,7 +184,7 @@ private static void menuAluno() {
         }
     }
 }
-    // --- MODO DISCIPLINA/TURMA ---
+    //Modo Discplina/Turma
     private static void menuDisciplinaTurma() {
         boolean voltar = false;
 

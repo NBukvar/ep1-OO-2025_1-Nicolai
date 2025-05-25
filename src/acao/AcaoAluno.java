@@ -25,17 +25,7 @@ public class AcaoAluno {
             System.out.println(aluno);
         }
     }
-    public boolean trancarAluno(String matricula) {
-        Aluno aluno = buscarAlunoporMatricula(matricula);
-        if (aluno != null) {
-            aluno.trancarMatricula();
-            System.out.println("Aluno trancado com sucesso.");
-            return true;
-        } else {
-            System.out.println("Aluno não encontrado.");
-            return false;
-        }
-    }
+
     public static void editarTurmasAluno(Scanner scanner){
         System.out.print("Digite a matrícula do aluno: ");
         String matricula = scanner.nextLine();
@@ -107,8 +97,12 @@ public class AcaoAluno {
         }
         return null;
     }
+    public void setAlunos(List<Aluno> alunos) {
+        this.alunos = alunos;
+    }
 
     public List<Aluno> getAlunos() {
+
         return alunos;
     }
 

@@ -1,9 +1,9 @@
 package modelo;
 
 public class ResultadoFinal {
-    private double media;
-    private double frequencia;
-    private String situacao;
+    private final double media;
+    private final double frequencia;
+    private final String situacao;
 
     public ResultadoFinal(double media, double frequencia, String situacao) {
         this.media = media;

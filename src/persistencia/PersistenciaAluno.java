@@ -1,6 +1,5 @@
 package persistencia;
 import modelo.Aluno;
-import modelo.Turma;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,9 +8,7 @@ public class PersistenciaAluno {
     public static void salvarAlunos(List<Aluno> alunos) {
         try (PrintWriter writer = new PrintWriter("alunos.csv")) {
             for (Aluno aluno : alunos) {
-                writer.println(aluno.getNome() + "," +
-                        aluno.getMatricula() + "," +
-                        aluno.getCurso());
+                writer.println(aluno.getNome() + "," + aluno.getMatricula() + "," + aluno.getCurso());
             }
         } catch (IOException e) {
             System.out.println("Erro ao salvar alunos: " + e.getMessage());

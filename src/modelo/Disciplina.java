@@ -1,12 +1,11 @@
 package modelo;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Disciplina {
-    private String nome;
-    private String codigo;
-    private int cargaHoraria;
-    private List<String> preRequisitos;
+    private final String nome;
+    private final String codigo;
+    private final int cargaHoraria;
+    private final List<String> preRequisitos;
 
     public Disciplina(String nome, String codigo, int cargaHoraria,List<String> preRequisitos) {
         this.nome = nome;
@@ -24,12 +23,7 @@ public class Disciplina {
     public int getCargaHoraria() {
         return cargaHoraria;
     }
-    public List<String> getPreRequisitos() {
-        return preRequisitos;
-    }
-    public void adcionaPreRequisito(String codigo) {
-        preRequisitos.add(codigo);
-    }
+
     public String toString() {
         return nome + "("+ codigo + ") - " + cargaHoraria + " horas";
     }
