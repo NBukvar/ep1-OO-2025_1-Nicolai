@@ -76,7 +76,7 @@ public class AcaoAvaliacaoFrequencia {
         System.out.print("Código da turma: ");
         String codTurma = scanner.nextLine();
 
-        List<Turma> turmas = SistemaAcademico.acaoDisciplinaTurma.getTurmas();
+        List<Turma> turmas = SistemaAcademico.AcaoTurma.getTurmas();
 
         for (Turma turma : turmas) {
             if (turma.getCodigoTurma().equalsIgnoreCase(codTurma)) {
@@ -115,7 +115,7 @@ public class AcaoAvaliacaoFrequencia {
         System.out.print(" Digite a matrícula do aluno: ");
         String matricula = scanner.nextLine();
 
-        List<Turma> turmas = SistemaAcademico.acaoDisciplinaTurma.getTurmas();
+        List<Turma> turmas = SistemaAcademico.AcaoTurma.getTurmas();
         boolean encontrou = false;
 
         for (Turma turma : turmas) {
@@ -155,7 +155,7 @@ public class AcaoAvaliacaoFrequencia {
         System.out.print(" Digite o código da turma: ");
         String codTurma = scanner.nextLine();
 
-        List<Turma> turmas = SistemaAcademico.acaoDisciplinaTurma.getTurmas();
+        List<Turma> turmas = SistemaAcademico.AcaoTurma.getTurmas();
         for (Turma turma : turmas) {
             if (turma.getCodigoTurma().equalsIgnoreCase(codTurma)) {
                 System.out.println("\nRelatório da Turma " + codTurma);
@@ -187,7 +187,7 @@ public class AcaoAvaliacaoFrequencia {
         System.out.print(" Digite o código da disciplina: ");
         String codDisc = scanner.nextLine();
 
-        List<Turma> turmas =SistemaAcademico.acaoDisciplinaTurma.getTurmas();
+        List<Turma> turmas =SistemaAcademico.AcaoTurma.getTurmas();
         for (Turma turma : turmas) {
             if (turma.getDisciplina().getCodigo().equalsIgnoreCase(codDisc)) {
                 System.out.println("\nTurma: " + turma.getCodigoTurma());
@@ -204,7 +204,7 @@ public class AcaoAvaliacaoFrequencia {
         System.out.print(" Digite a matrícula do professor: ");
         String matProf = scanner.nextLine();
 
-        List<Turma> turmas = SistemaAcademico.acaoDisciplinaTurma.getTurmas();
+        List<Turma> turmas = SistemaAcademico.AcaoTurma.getTurmas();
         for (Turma turma : turmas) {
             if (turma.getProfessor().getMatricula().equalsIgnoreCase(matProf)) {
                 System.out.println("\nTurma: " + turma.getCodigoTurma() + " - Disciplina: " + turma.getDisciplina().getNome());

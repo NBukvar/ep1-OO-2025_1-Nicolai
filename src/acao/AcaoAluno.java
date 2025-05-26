@@ -50,7 +50,7 @@ public class AcaoAluno {
                 case 1:
                     System.out.print(" Digite o código da turma a adicionar: ");
                     String codAdicionar = scanner.nextLine();
-                    Turma turmaAdicionar = SistemaAcademico.acaoDisciplinaTurma.buscarTurmaPorCodigo(codAdicionar);
+                    Turma turmaAdicionar = SistemaAcademico.AcaoTurma.buscarTurmaPorCodigo(codAdicionar);
 
                     if (turmaAdicionar != null) {
                         if (!aluno.getTurmasMatriculadas().contains(turmaAdicionar)) {
@@ -68,7 +68,7 @@ public class AcaoAluno {
                 case 2:
                     System.out.print(" Digite o código da turma a remover: ");
                     String codRemover = scanner.nextLine();
-                    Turma turmaRemover = SistemaAcademico.acaoDisciplinaTurma.buscarTurmaPorCodigo(codRemover);
+                    Turma turmaRemover = SistemaAcademico.AcaoTurma.buscarTurmaPorCodigo(codRemover);
 
                     if (turmaRemover != null && aluno.getTurmasMatriculadas().contains(turmaRemover)) {
                         aluno.getTurmasMatriculadas().remove(turmaRemover);

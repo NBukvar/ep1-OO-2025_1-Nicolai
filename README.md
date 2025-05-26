@@ -18,49 +18,68 @@ O enunciado do trabalho pode ser encontrado aqui:
 
 ## Instruções para Compilação e Execução
 
-1. **Compilação:**  
-   [Descrever aqui como compilar o projeto. Exemplo: `javac Main.java` ou o script usado]
+### 1. **Compilação:**  
 
-   2. **Execução:**  
-      [Descrever aqui como executar o projeto. Exemplo: `java Main` ou o script usado]
+   📁 **Requisitos**
+   - Java JDK 17 ou superior  
+   - Terminal (cmd, bash, PowerShell, etc.)  
+   - Editor de texto ou IDE (opcional, ex: VS Code, IntelliJ, Eclipse)
 
-   3. **Estrutura de Pastas:**  
-   sistema-fcte/  
-   ├── .idea/  
-   ├── out/  
-   ├── Prints-Fucionamento/                    
-   │     
-   ├── src/                     
-   │   ├── acao/   
-   │   │   ├── AcaoAluno.java   
-   │   │   ├── AcaoAvalicaoFrequencia.java  
-   │   │   └── AcaoDisciplinaTurma.java  
-   │   ├── main/  
-   │   │   └── SistemaAcademico.java   
-   │   ├── modelo/  
-   │   │   ├── Aluno.java  
-   │   │   ├── AlunoEspecial.java  
-   │   │   ├── Avaliacao.java  
-   │   │   ├── AvaliacaoPonderada.java  
-   │   │   ├── AvaliacaoSimples.java  
-   │   │   ├── Disciplina.java  
-   │   │   ├── Professor.java  
-   │   │   ├── ResultadoFinal.java  
-   │   │   └──Turma.java  
-   │   │     
-   │   └── persistencia/   
-   │       ├── PersistenciaAluno.java  
-   │       ├── PersistenciaDisciplina.java  
-   │       ├── PersistenciaProfessor.java  
-   │       └──PersistenciaTurma.java  
-   │   
-   ├── .gitgnore                  
-   ├── alunos.csv        
-   ├── disciplinas.csv              
-   ├── professores.csv  
-   ├── README.md  
-   ├──sistema-fcte.iml  
-   └──turmas.csv  
+
+### 2. **Execução:**  
+▶️ **Executando o Projeto**
+
+- Clone o repositório
+``` bash
+     git clone https://github.com/seu-usuario/seu-repositorio.git  
+     cd seu-repositorio
+```
+- Compile o projeto
+```bash
+    javac SistemaAcademico.java 
+```
+- Execute o projeto
+```bash
+    java SistemaAcademico 
+```
+
+### 3. **Estrutura de Pastas:**  
+sistema-fcte/  
+├── .idea/  
+├── out/  
+├── Prints-Fucionamento/                    
+│     
+├── src/                     
+│   ├── acao/   
+│   │   ├── AcaoAluno.java   
+│   │   ├── AcaoAvalicaoFrequencia.java  
+│   │   └── AcaoDisciplinaTurma.java  
+│   ├── main/  
+│   │   └── SistemaAcademico.java   
+│   ├── modelo/  
+│   │   ├── Aluno.java  
+│   │   ├── AlunoEspecial.java  
+│   │   ├── Avaliacao.java  
+│   │   ├── AvaliacaoPonderada.java  
+│   │   ├── AvaliacaoSimples.java  
+│   │   ├── Disciplina.java  
+│   │   ├── Professor.java  
+│   │   ├── ResultadoFinal.java  
+│   │   └──Turma.java  
+│   │     
+│   └── persistencia/   
+│       ├── PersistenciaAluno.java  
+│       ├── PersistenciaDisciplina.java  
+│       ├── PersistenciaProfessor.java  
+│       └──PersistenciaTurma.java  
+│   
+├── .gitgnore                  
+├── alunos.csv        
+├── disciplinas.csv              
+├── professores.csv  
+├── README.md  
+├──sistema-fcte.iml  
+└──turmas.csv  
    
 3. **Versão do JAVA utilizada:**  
 Oracle OpenJDK 24.0.1

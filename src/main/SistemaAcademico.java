@@ -8,14 +8,11 @@ import java.util.*;
 public class SistemaAcademico {
     private static final Scanner scanner = new Scanner(System.in);
     public static AcaoAluno AcaoAluno = new AcaoAluno();
-    private static final AcaoDisciplinaTurma AcaoTurma = new AcaoDisciplinaTurma();
+    public static final AcaoDisciplinaTurma AcaoTurma = new AcaoDisciplinaTurma();
     private static final AcaoAvaliacaoFrequencia AcaoAvaliacao = new AcaoAvaliacaoFrequencia();
-    public static AcaoDisciplinaTurma acaoDisciplinaTurma = new AcaoDisciplinaTurma();
 
 
-
-
-    //Main para o Sistema Operacional Geral
+        //Main para o Sistema Operacional Geral
     public static void main(String[] args) {
         // Carregar dados dos arquivos
                 // 1. Carrega alunos do CSV e envia para a ação
@@ -23,10 +20,10 @@ public class SistemaAcademico {
         AcaoAluno.setAlunos(alunos);
 
                 // 2. Carrega disciplinas
-        List<Disciplina> disciplinas = AcaoDisciplinaTurma.getDisciplinas();
-        AcaoTurma.setDisciplinas(disciplinas);
+        List<Disciplina> disciplinas = PersistenciaDisciplina.carregarDisciplinas();
+        AcaoTurma.setDisciplinas(PersistenciaDisciplina.carregarDisciplinas());
 
-                 // 3. Carrega professores
+        // 3. Carrega professores
         List<Professor> professores = PersistenciaProfessor.carregarProfessores();
         AcaoTurma.setProfessores(professores);
 
@@ -62,9 +59,9 @@ public class SistemaAcademico {
                     System.out.println(" Encerrando o sistema com segurança...");
                     //salvar os dados
                     PersistenciaAluno.salvarAlunos(AcaoAluno.getAlunos());
-                    PersistenciaDisciplina.salvarDisciplinas(AcaoDisciplinaTurma.getDisciplinas());
+                    PersistenciaDisciplina.salvarDisciplinas(AcaoTurma.getDisciplinas());
                     PersistenciaTurma.salvarTurmas(AcaoTurma.getTurmas());
-                    PersistenciaProfessor.salvarProfessores(AcaoDisciplinaTurma.getProfessores());
+                    PersistenciaProfessor.salvarProfessores(AcaoTurma.getProfessores());
 
                     executando = false;
                     break;
@@ -107,7 +104,7 @@ private static void menuAluno() {
                 boolean continuarMatriculas = true;
                 while (continuarMatriculas) {
 
-                    List<Turma> turmasDisponiveis = acaoDisciplinaTurma.getTurmas();
+                    List<Turma> turmasDisponiveis = AcaoTurma.getTurmas();
 
                     if (turmasDisponiveis.isEmpty()) {
                         System.out.println("Nenhuma turma disponível para matrícula.");
@@ -274,12 +271,11 @@ private static void menuAluno() {
     // === MODO AVALIAÇÃO/FREQUÊNCIA ===
     private static void menuAvaliacaoFrequencia() {
     boolean voltar = false;
-        Scanner scanner = new Scanner(System.in);
 
         while (!voltar) {
             System.out.println("\n--- MODO AVALIAÇÃO/FREQUÊNCIA ---");
             System.out.println("1. Lançar notas e presença por turma");
-            System.out.println("2. Caclular Média e Frequência");
+            System.out.println("2. Calcular Média e Frequência");
             System.out.println("3. Boletim por aluno");
             System.out.println("4. Relatório da Turma");
             System.out.println("5. Relatório da Disciplina");
@@ -292,7 +288,7 @@ private static void menuAluno() {
                 case 1:
                     System.out.print("Código da turma: ");
                     String codigoTurma = scanner.nextLine();
-                    Turma turma = SistemaAcademico.acaoDisciplinaTurma.buscarTurmaPorCodigo(codigoTurma);
+                    Turma turma = SistemaAcademico.AcaoTurma.buscarTurmaPorCodigo(codigoTurma);
                     if (turma != null) {
                         AcaoAvaliacao.lancarNotasFrequencia(turma); // aqui já calcula junto
                     } else {

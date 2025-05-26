@@ -8,9 +8,9 @@ public class Turma {
     private final String semestre;
     private final String formaAvaliacao;
     private final boolean presencial;
-    private String sala;
+    private final String sala;
     private final String horario;
-    private final int capacidadeMaxima;
+    private int capacidadeMaxima;
     private final List<Aluno> alunosMatriculados;
     private Map<String, double[]> notas;
     private Map<String, Integer> presencas;
@@ -25,7 +25,8 @@ public class Turma {
         this.semestre = semestre;
         this.formaAvaliacao = formaAvaliacao;
         this.presencial = presencial;
-        this.sala = sala; String sala1 = presencial ? sala : "Remota";
+        this.sala = sala;
+        String sala1 = presencial ? sala : "Remota";
         this.horario = horario;
         this.capacidadeMaxima = capacidadeMaxima;
         this.alunosMatriculados = new ArrayList<>();
@@ -44,9 +45,11 @@ public class Turma {
     public Professor getProfessor() {
         return professor;
     }
+
     public String getFormaAvaliacao() {
         return formaAvaliacao;
     }
+
     public String getCodigoTurma() {
         return codigoTurma;
     }
@@ -66,7 +69,19 @@ public class Turma {
     public Map<String, ResultadoFinal> getResultadosFinais() {
         return resultadosFinais;
     }
+    public String getCapacidadeMaxima() {
+        return String.valueOf(capacidadeMaxima);
+    }
+    public String getHorario() {
+        return horario;
+    }
+    public String getSala() {
+        return sala;
+    }
 
+    public void setCapacidadeMaxima(int capacidadeMaxima) {
+        this.capacidadeMaxima= capacidadeMaxima;
+   }
     public void setNotas(Map<String, double[]> notas) {
         this.notas = notas;
     }
@@ -95,14 +110,15 @@ public class Turma {
     public List<Aluno> getAlunosMatriculados() {
         return alunosMatriculados;
     }
+
     public String toString() {
-        return "Turma: " +codigoTurma +
+        return "Turma: " + codigoTurma +
                 "\n - Disciplina: " + disciplina.getCodigo() +
                 "\n - Professor: " + professor.getNome() +
                 "\n - Semestre: " + semestre +
                 "\n - Avaliação: " + formaAvaliacao +
                 "\n - Tipo: " + (presencial ? "Presencial" : "Remota") +
-                "\n - Sala:" + sala +
+                "\n - Sala: " + (presencial ?  sala : "A Turma é Remota")+
                 "\n - Horário: " + horario +
                 "\n - Capacidade: " + capacidadeMaxima + " alunos";
     }
@@ -110,4 +126,5 @@ public class Turma {
     public boolean isPresencial() {
         return presencial;
     }
+
 }

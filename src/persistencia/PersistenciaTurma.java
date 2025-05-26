@@ -17,10 +17,9 @@ public class PersistenciaTurma {
                                 t.getSemestre() + "," +
                                 t.getFormaAvaliacao() + "," +
                                 t.isPresencial() + "," +
-                                t.getDisciplina().getNome() + "," + // caso a sala não esteja salva em outro lugar
-                                t.getCodigoTurma() + "," + // se o horário estiver no código
-                                t.getAlunosMatriculados().size()
-                );
+                                t.getSala() + "," +
+                                t.getHorario() + "," +
+                                t.getCapacidadeMaxima());
             }
         } catch (Exception e) {
             System.out.println("Erro ao salvar turmas: " + e.getMessage());

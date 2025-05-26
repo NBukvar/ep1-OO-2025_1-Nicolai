@@ -1,6 +1,9 @@
 package acao;
 import modelo.*;
 import java.util.*;
+import persistencia.*;
+
+import static main.SistemaAcademico.*;
 
 public class AcaoDisciplinaTurma {
     private  static List<Disciplina> disciplinas = new ArrayList<>();
@@ -20,6 +23,7 @@ public class AcaoDisciplinaTurma {
         }
     Turma turma = new Turma(codigoTurma, d, prof, semestre, formaAvaliacao, presencial, sala, horario, capacidade);
         turmas.add(turma);
+        PersistenciaTurma.salvarTurmas(turmas);
         System.out.println("Turma criada com sucesso");
     }
 
@@ -34,7 +38,7 @@ public class AcaoDisciplinaTurma {
         return turmas;
     }
     public void setTurmas(List<Turma> turmas) {
-        AcaoDisciplinaTurma.turmas = turmas;
+        AcaoTurma.turmas = turmas;
     }
 
     public void listarTurmas() {
@@ -51,7 +55,7 @@ public class AcaoDisciplinaTurma {
     }
 
     public void setDisciplinas(List<Disciplina> disciplinas) {
-        AcaoDisciplinaTurma.disciplinas = disciplinas;
+        AcaoTurma.disciplinas = disciplinas;
     }
     public static List<Disciplina> getDisciplinas() {
         return disciplinas;
