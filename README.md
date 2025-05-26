@@ -12,7 +12,7 @@ O enunciado do trabalho pode ser encontrado aqui:
 - **Nome completo:** Nicolai Bukvar Miketen
 - **Matrícula:** 241025345
 - **Curso:** Engenharias (3 Semestre)
-- **Turma:** [Preencher aqui]
+- **Turma:** T06
 
 ---
 
@@ -21,14 +21,49 @@ O enunciado do trabalho pode ser encontrado aqui:
 1. **Compilação:**  
    [Descrever aqui como compilar o projeto. Exemplo: `javac Main.java` ou o script usado]
 
-2. **Execução:**  
-   [Descrever aqui como executar o projeto. Exemplo: `java Main` ou o script usado]
+   2. **Execução:**  
+      [Descrever aqui como executar o projeto. Exemplo: `java Main` ou o script usado]
 
-3. **Estrutura de Pastas:**  
-   [Descrever aqui as principais pastas do projeto]
-
+   3. **Estrutura de Pastas:**  
+   sistema-fcte/  
+   ├── .idea/  
+   ├── out/  
+   ├── Prints-Fucionamento/                    
+   │     
+   ├── src/                     
+   │   ├── acao/   
+   │   │   ├── AcaoAluno.java   
+   │   │   ├── AcaoAvalicaoFrequencia.java  
+   │   │   └── AcaoDisciplinaTurma.java  
+   │   ├── main/  
+   │   │   └── SistemaAcademico.java   
+   │   ├── modelo/  
+   │   │   ├── Aluno.java  
+   │   │   ├── AlunoEspecial.java  
+   │   │   ├── Avaliacao.java  
+   │   │   ├── AvaliacaoPonderada.java  
+   │   │   ├── AvaliacaoSimples.java  
+   │   │   ├── Disciplina.java  
+   │   │   ├── Professor.java  
+   │   │   ├── ResultadoFinal.java  
+   │   │   └──Turma.java  
+   │   │     
+   │   └── persistencia/   
+   │       ├── PersistenciaAluno.java  
+   │       ├── PersistenciaDisciplina.java  
+   │       ├── PersistenciaProfessor.java  
+   │       └──PersistenciaTurma.java  
+   │   
+   ├── .gitgnore                  
+   ├── alunos.csv        
+   ├── disciplinas.csv              
+   ├── professores.csv  
+   ├── README.md  
+   ├──sistema-fcte.iml  
+   └──turmas.csv  
+   
 3. **Versão do JAVA utilizada:**  
-   [Descrever aqui como versão do JAVA utilizada no projeto. Sugestão: `java 21`]
+Oracle OpenJDK 24.0.1
 
 ---
 
@@ -40,28 +75,31 @@ O enunciado do trabalho pode ser encontrado aqui:
 
 ## Prints da Execução
 
-1. Menu Principal:  
-   ![Inserir Print 1](caminho/do/print1.png)
+### 1. Menu Principal: 
+   ![Inserir Print 1](Prints-Funcionamento/PrintMenuPrincipal.png)
 
-2. Cadastro de Aluno:  
-   ![Inserir Print 2](caminho/do/print2.png)
+### 2. Cadastro de Aluno:
+   ![](Prints-Funcionamento/PrintCadastroAluno.png)
 
-3. Relatório de Frequência/Notas:  
-   ![Inserir Print 3](caminho/do/print3.png)
+   ![](Prints-Funcionamento/PrintCadastroAlunoComMatricula.png)
 
----
+### 3. Relatório de Frequência/Notas: 
+   ![](Prints-Funcionamento/PrintFrequenciaNotas.png)
+
+   ![](Prints-Funcionamento/PrintFrequenciaNotas2.png)
+
 
 ## Principais Funcionalidades Implementadas
 
-- [ ] Cadastro, listagem, matrícula e trancamento de alunos (Normais e Especiais)
-- [ ] Cadastro de disciplinas e criação de turmas (presenciais e remotas)
-- [ ] Matrícula de alunos em turmas, respeitando vagas e pré-requisitos
-- [ ] Lançamento de notas e controle de presença
-- [ ] Cálculo de média final e verificação de aprovação/reprovação
-- [ ] Relatórios de desempenho acadêmico por aluno, turma e disciplina
-- [ ] Persistência de dados em arquivos (.txt ou .csv)
-- [ ] Tratamento de duplicidade de matrículas
-- [ ] Uso de herança, polimorfismo e encapsulamento
+- [x] Cadastro, listagem, matrícula e trancamento de alunos (Normais e Especiais)
+- [X] Cadastro de disciplinas e criação de turmas (presenciais e remotas)
+- [X] Matrícula de alunos em turmas, respeitando vagas e pré-requisitos
+- [X] Lançamento de notas e controle de presença
+- [X] Cálculo de média final e verificação de aprovação/reprovação
+- [X] Relatórios de desempenho acadêmico por aluno, turma e disciplina
+- [X] Persistência de dados em arquivos (.txt ou .csv)
+- [X] Tratamento de duplicidade de matrículas
+- [X] Uso de herança, polimorfismo e encapsulamento
 
 ---
 
