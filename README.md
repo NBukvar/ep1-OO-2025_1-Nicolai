@@ -88,14 +88,14 @@ Oracle OpenJDK 24.0.1
 
 ## Vídeo de Demonstração
 
-- [Inserir o link para o vídeo no YouTube/Drive aqui]
+- https://youtu.be/85vwBapOib0
 
 ---
 
 ## Prints da Execução
 
 ### 1. Menu Principal: 
-   ![Inserir Print 1](Prints-Funcionamento/PrintMenuPrincipal.png)
+   ![](Prints-Funcionamento/PrintMenuPrincipal.png)
 
 ### 2. Cadastro de Aluno:
    ![](Prints-Funcionamento/PrintCadastroAluno.png)
@@ -124,10 +124,17 @@ Oracle OpenJDK 24.0.1
 
 ## Observações (Extras ou Dificuldades)
 
-- [Espaço para o aluno comentar qualquer funcionalidade extra que implementou, dificuldades enfrentadas, ou considerações importantes.]
+- A minha maior dificuldade foi a questão do salvamento de Dados, seja no CSV ou apenas durante a realização do código. Por exemplo, não consegui salvar as turmas para que fossem lidas termo-a-termo durante a realização da matrícula, então, fiz  com que todas fosse imprimidas e o usuário escolhesse qual se matricular.
+- No salvamento do CSV, consigo salvar as Turmas dos Alunos e seus dados, mas não consegui realizar o carregamento de tais dados, com eles apenas ficando salvos...
+- A implementação de tantos métodos, classes, situações diferentes foi uma etapa compllicada para mim, pois minha única experiência anterior com a programação foi APC na linguagem de C, mas tentei o meu máximo fazer um código bom e funcional.
+- Não tive tempo para tentar aprender-fazer a implementação de interface gráfica.
+- As checagens feitas na main, de acordo com os menus,ou seja, os "cases" foi algo bem complicado para mim, pois acabei não usando alguns métodos, ou criando métodos demais, o que dificultou na organização do código.
+- No geral foi um código simples, que poderia ter tido um pouco mais de tempo, ou sido um pouco mais simples, mas serve como uma maneira de estudos para a disciplina.
+- Precisei acelerar o vídeo, pois não cosneguia encaixar a explicação em apenas 5 minutos.
+- Espero que eu vá bem, pois programação não é meu forte....
 
 ---
 
 ## Contato
 
-- [Opcional: E-mail pessoal do aluno.]
+- nbmiketen@hotmail.com
